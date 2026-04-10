@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Greeting</title>
+
+    <link rel="stylesheet" href="index.css" />
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <!-- Intro Screen -->
+    <div id="intro-screen">
+      <h1 class="intro-text">HI CHACHAR!!!</h1>
+    </div>
+
+    <!-- Main Content (hidden initially) -->
+    <div id="main-content" style="display: none">
+      <!-- Background -->
+      <div class="bg-container">
+        <img src="OIP-removebg-Preview.png" class="rainbow" />
+      </div>
+
+      <!-- Main character area -->
+      <div class="main-container">
+        <img
+          src="13c86233-3664-4c34-ad82-9e042e6bfa98-removebg-preview.png"
+          class="girl"
+        />
+
+        <img src="/OIP__1_-removebg-preview.png" class="cake" />
+
+        <div class="text">Happy 19th Birthday</div>
+      </div>
+
+      <!-- Bottom decorations -->
+      <div class="bottom-container">
+        <img src="OIP__2_-removebg-preview.png" class="bottom-deco left-deco" />
+        <img
+          src="OIP__2_-removebg-preview.png"
+          class="bottom-deco right-deco"
+        />
+
+        <img src="200.webp" class="cat cat-left" />
+        <img src="200.webp" class="cat cat-right" />
+        <img src="200.webp" class="cat cat-extra1" />
+        <img src="200.webp" class="cat cat-extra2" />
+        <img
+          src="/bright-yellow-background-has-green-eyes.png"
+          class="cat cat-extra3"
+        />
+      </div>
+    </div>
+
+    <audio autoplay loop muted id="bg-music">
+      <source src="/the_mountain-happy-birthday-508020.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script id="music2">
+      // Intro to Main Content transition
+      const introScreen = document.getElementById("intro-screen");
+      const mainContent = document.getElementById("main-content");
+
+      // Show main content after intro animation completes (3s delay + 1s fade = 4s total)
+      setTimeout(() => {
+        mainContent.style.display = "block";
+      }, 4000);
+
+      // Music handling
+      const music = document.getElementById("bg-music");
+      document.addEventListener("click", () => {
+        music.muted = false;
+        music.play();
+      });
+    </script>
+  </body>
+</html>

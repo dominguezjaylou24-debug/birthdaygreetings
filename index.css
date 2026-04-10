@@ -1,0 +1,721 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: white;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== INTRO SCREEN ===== */
+#intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    #ff6b6b,
+    #feca57,
+    #48dbfb,
+    #ff9ff3,
+    #54a0ff
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 3s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  animation: fadeOut 1s ease-out 3s forwards;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.intro-text {
+  font-size: 100px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow:
+    3px 3px 0 #ff6b6b,
+    6px 6px 0 #feca57,
+    9px 9px 0 #48dbfb,
+    12px 12px 20px rgba(0, 0, 0, 0.3);
+  animation:
+    bounce 0.6s ease-in-out infinite,
+    rainbow 2s linear infinite;
+  letter-spacing: 5px;
+  font-family: "Comic Sans MS", "Chalkboard SE", sans-serif;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    color: #ff6b6b;
+  }
+  20% {
+    color: #feca57;
+  }
+  40% {
+    color: #48dbfb;
+  }
+  60% {
+    color: #ff9ff3;
+  }
+  80% {
+    color: #54a0ff;
+  }
+  100% {
+    color: #ff6b6b;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ===== CONTAINERS ===== */
+
+.bg-container,
+.top-container,
+.main-container,
+.bottom-container {
+  width: 100%;
+}
+
+/* background */
+.bg-container {
+  height: 100%;
+  z-index: 1;
+}
+
+/* top decorations */
+.top-container {
+  top: 0;
+  height: 45%;
+  z-index: 2;
+}
+
+/* main content */
+.main-container {
+  top: 0;
+  height: 100%;
+  z-index: 4;
+}
+
+/* bottom decorations */
+.bottom-container {
+  bottom: 0;
+  height: 100%;
+  z-index: 3;
+}
+
+/* ===== CONFETTI ANIMATIONS ===== */
+
+/* Confetti falling from left to center */
+@keyframes fallFromLeft {
+  0% {
+    transform: translateX(-100vw) translateY(-100px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(50vw) translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Confetti falling from right to center */
+@keyframes fallFromRight {
+  0% {
+    transform: translateX(100vw) translateY(-100px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50vw) translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Confetti falling from top center */
+@keyframes fallFromTop {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Confetti falling with random pattern 1 */
+@keyframes fallRandom1 {
+  0% {
+    transform: translateX(0) translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(50px) translateY(25vh) rotate(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-30px) translateY(50vh) rotate(180deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(40px) translateY(75vh) rotate(270deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0) translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Confetti falling with random pattern 2 */
+@keyframes fallRandom2 {
+  0% {
+    transform: translateX(0) translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(-60px) translateY(25vh) rotate(-90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(40px) translateY(50vh) rotate(180deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(-50px) translateY(75vh) rotate(-270deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0) translateY(100vh) rotate(-360deg);
+    opacity: 0;
+  }
+}
+
+/* Confetti falling with random pattern 3 */
+@keyframes fallRandom3 {
+  0% {
+    transform: translateX(0) translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  33% {
+    transform: translateX(80px) translateY(33vh) rotate(120deg);
+    opacity: 1;
+  }
+  66% {
+    transform: translateX(-40px) translateY(66vh) rotate(240deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(20px) translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+
+/* Shake animation for balloons and cake */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-50%) rotate(-3deg);
+  }
+  75% {
+    transform: translateX(-50%) rotate(3deg);
+  }
+}
+
+/* Shake animation for rainbow */
+@keyframes shakeRainbow {
+  0%,
+  100% {
+    transform: translateX(12.5%) translateY(10%) rotate(0deg);
+  }
+  25% {
+    transform: translateX(12.5%) translateY(10%) rotate(-2deg);
+  }
+  75% {
+    transform: translateX(12.5%) translateY(10%) rotate(2deg);
+  }
+}
+
+/* Slide from right */
+@keyframes slideFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide from left */
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide from top */
+@keyframes slideFromTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slide from bottom */
+@keyframes slideFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ===== IMAGES ===== */
+
+.rainbow {
+  position: absolute;
+  top: 0;
+  left: 10px;
+
+  width: 80%; /* paliitin */
+  height: 70%; /* paliitin */
+
+  object-fit: contain;
+  transform: translateX(12.5%) translateY(10%);
+  z-index: 1;
+  animation:
+    slideFromTop 1.2s ease-out forwards,
+    shakeRainbow 3s ease-in-out infinite 1.5s;
+}
+
+/* balloons */
+.balloons {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation:
+    slideFromTop 1s ease-out forwards,
+    shake 2s ease-in-out infinite 1.5s;
+}
+
+/* girl */
+.girl {
+  position: absolute;
+  top: 28%;
+  left: 45%;
+  transform: translateX(-50%);
+  width: 220px;
+  animation: slideFromTop 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+/* cake */
+.cake {
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  transform: translateX(-50%);
+  width: 200px;
+  animation:
+    slideFromTop 1s ease-out 0.5s forwards,
+    shake 2s ease-in-out infinite 1.8s;
+  opacity: 0;
+}
+
+/* text */
+.text {
+  position: absolute;
+  top: 83%;
+  width: 100%;
+  text-align: center;
+  font-size: 70px;
+  font-weight: 900;
+  background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation:
+    slideFromTop 1s ease-out 0.7s forwards,
+    gradientText 3s ease infinite;
+  opacity: 0;
+  font-family: "Comic Sans MS", "Chalkboard SE", sans-serif;
+  text-shadow: none;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* bottom deco */
+.bottom-deco {
+  position: absolute;
+  bottom: 0;
+  width: 140px;
+}
+
+.left-deco {
+  left: 460px;
+  margin-bottom: 150px;
+  z-index: 9999;
+  animation:
+    slideFromLeft 1s ease-out 0.8s forwards,
+    shake 2s ease-in-out infinite 1.8s;
+  opacity: 0;
+}
+
+.right-deco {
+  right: 300px;
+  margin-bottom: 150px;
+  z-index: 9999;
+  animation:
+    slideFromRight 1s ease-out 0.8s forwards,
+    shake 2s ease-in-out infinite 1.8s;
+  opacity: 0;
+}
+
+/* cats */
+.cat {
+  position: absolute;
+  bottom: 10px;
+  width: 90px;
+}
+
+.cat-left {
+  left: 500px;
+  width: 500px;
+  height: auto;
+  margin-left: 550px;
+  animation: slideFromLeft 1s ease-out 1s forwards;
+  opacity: 0;
+}
+
+.cat-right {
+  right: 500px;
+  width: 500px;
+  height: auto;
+  margin-right: 550px;
+  animation: slideFromRight 1s ease-out 1s forwards;
+  opacity: 0;
+}
+
+.cat-extra1 {
+  right: -100px;
+  width: 500px;
+  height: auto;
+  margin-bottom: 300px;
+  animation: slideFromRight 1s ease-out 1.1s forwards;
+  opacity: 0;
+}
+.cat-extra2 {
+  left: -100px;
+  width: 500px;
+  height: auto;
+  margin-right: 550px;
+  margin-bottom: 300px;
+  animation: slideFromLeft 1s ease-out 1.1s forwards;
+  opacity: 0;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+
+/* Mobile Phones (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  /* Intro text - smaller for mobile */
+  .intro-text {
+    font-size: 36px;
+    letter-spacing: 2px;
+    text-shadow:
+      2px 2px 0 #ff6b6b,
+      4px 4px 0 #feca57,
+      6px 6px 0 #48dbfb,
+      8px 8px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Rainbow - smaller and centered */
+  .rainbow {
+    width: 90%;
+    height: 45%;
+    left: -5%;
+    transform: translateX(0) translateY(5%);
+  }
+
+  /* Girl - smaller and centered */
+  .girl {
+    top: 25%;
+    left: 35%;
+    transform: translateX(-50%);
+    width: 35%;
+    max-width: 140px;
+  }
+
+  /* Cake - smaller and centered */
+  .cake {
+    top: 42%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    max-width: 120px;
+  }
+
+  /* Text - smaller and centered */
+  .text {
+    top: 62%;
+    font-size: clamp(24px, 6vw, 36px);
+    width: 100%;
+    left: 0;
+  }
+
+  /* Bottom decorations - smaller and centered */
+  .bottom-deco {
+    width: 25%;
+    max-width: 70px;
+  }
+
+  .left-deco {
+    left: 15%;
+    margin-bottom: 95%;
+  }
+
+  .right-deco {
+    right: -5%;
+    margin-bottom: 95%;
+  }
+
+  /* Cats - smaller and repositioned */
+  .cat {
+    width: 15%;
+    margin-bottom: 50%;
+  }
+
+  .cat-left {
+    left: 5%;
+    margin-left: -90px;
+    bottom: 2%;
+    width: 300px;
+    height: auto;
+  }
+
+  .cat-right {
+    right: 5%;
+    margin-right: -90px;
+    bottom: 2%;
+    width: 300px;
+    height: auto;
+  }
+
+  .cat-extra1 {
+    right: -20%;
+    width: 250px;
+    margin-bottom: 5%;
+  }
+
+  .cat-extra2 {
+    left: -20%;
+    width: 250px;
+    margin-bottom: 5%;
+  }
+
+  .cat-extra3 {
+    width: 300px;
+    left: 35px;
+    margin-bottom: 8%;
+  }
+}
+
+/* Tablet (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .intro-text {
+    font-size: 48px;
+    letter-spacing: 3px;
+  }
+
+  .rainbow {
+    width: 90%;
+    height: 60%;
+  }
+
+  .girl {
+    top: 25%;
+    width: 150px;
+    left: 50%;
+  }
+
+  .cake {
+    top: 42%;
+    width: 130px;
+    left: 50%;
+  }
+
+  .text {
+    top: 68%;
+    font-size: 36px;
+  }
+
+  .bottom-deco {
+    width: 80px;
+  }
+
+  .left-deco {
+    left: 30px;
+    margin-bottom: 100px;
+  }
+
+  .right-deco {
+    right: 30px;
+    margin-bottom: 100px;
+  }
+
+  .cat {
+    width: 60px;
+  }
+
+  .cat-left {
+    left: 20px;
+    margin-left: 0;
+  }
+
+  .cat-right {
+    right: 20px;
+    margin-right: 0;
+  }
+
+  .cat-extra1 {
+    right: 100px;
+    width: 50px;
+    margin-bottom: 200px;
+  }
+
+  .cat-extra2 {
+    left: 100px;
+    width: 50px;
+    margin-right: 0;
+    margin-bottom: 200px;
+  }
+}
+
+/* Laptop (769px - 1200px) */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  .intro-text {
+    font-size: 70px;
+  }
+
+  .girl {
+    width: 180px;
+    top: 26%;
+  }
+
+  .cake {
+    width: 160px;
+    top: 46%;
+  }
+
+  .text {
+    top: 75%;
+    font-size: 48px;
+  }
+
+  .bottom-deco {
+    width: 100px;
+  }
+
+  .left-deco {
+    left: 100px;
+    margin-bottom: 120px;
+  }
+
+  .right-deco {
+    right: 80px;
+    margin-bottom: 120px;
+  }
+
+  .cat {
+    width: 70px;
+  }
+
+  .cat-left {
+    left: 80px;
+    margin-left: 100px;
+  }
+
+  .cat-right {
+    right: 80px;
+    margin-right: 100px;
+  }
+
+  .cat-extra1 {
+    right: 50px;
+    width: 80px;
+    margin-bottom: 250px;
+  }
+
+  .cat-extra2 {
+    left: 50px;
+    width: 80px;
+    margin-right: 100px;
+    margin-bottom: 250px;
+  }
+}
+
+/* PC and Large Screens (min-width: 1201px) - Original styles */
+@media screen and (min-width: 1201px) {
+  /* Keep original styles */
+}
